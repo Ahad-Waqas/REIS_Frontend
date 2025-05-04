@@ -3,12 +3,14 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 import {
 Sidebar,
 SidebarContent,
+SidebarFooter,
 SidebarGroup,
 SidebarGroupContent,
 SidebarGroupLabel,
 SidebarMenu,
 SidebarMenuButton,
 SidebarMenuItem,
+SidebarTrigger,
 } from "@/components/ui/sidebar"
 
 // Menu items.
@@ -33,11 +35,7 @@ const items = [
     url: "#",
     icon: Search,
 },
-{
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-},
+
 ]
 
 export function AppSidebar() {
@@ -61,6 +59,20 @@ return (
             </SidebarMenu>
         </SidebarGroupContent>
         </SidebarGroup>
+        <SidebarFooter className="flex items-center justify-between fixed bottom-0 left-0">
+        <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                    <a href="#">
+                    <Settings />
+                    <span>Settings</span>
+                    
+                    </a>
+                </SidebarMenuButton>
+                </SidebarMenuItem>
+        <SidebarGroupContent>
+            <SidebarTrigger/>
+        </SidebarGroupContent>
+        </SidebarFooter>
     </SidebarContent>
     </Sidebar>
 )
