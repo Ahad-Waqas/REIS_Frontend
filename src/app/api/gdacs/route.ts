@@ -18,7 +18,7 @@ interface GdacsItem {
 export async function GET() {
   try {
     const response = await axios.get("https://www.gdacs.org/xml/rss.xml");
-    console.log("Response data:"); // Log the response data for debugging
+    
     const parser = new XMLParser({ ignoreAttributes: false });
     const json = parser.parse(response.data);
 
@@ -35,8 +35,7 @@ export async function GET() {
       long: item["geo:Point"]?.["geo:long"] ?? null,
       alertLevel: item["gdacs:alertlevel"] ?? "Unknown",
     }));
-    console.log("Parsed items:", topFive);
-
+    
     return NextResponse.json(topFive);
   } catch (error) {
     return NextResponse.json({ error: "Failed to fetch GDACS feed" }, { status: 500 });

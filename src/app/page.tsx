@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ModeToggle } from "@/components/theme_button";
 
 interface Alert {
   title: string;
@@ -32,8 +33,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-10">
+    <main className="flex min-h-screen flex-col items-center p-10 bg-transparent">
       <h1 className="text-3xl font-bold mb-6">Top 5 GDACS Alerts</h1>
+      <ModeToggle />
       <div className="space-y-6 w-full max-w-2xl">
         {topAlerts.map((alert, i) => (
           <div key={i} className="border p-4 rounded shadow-md">
@@ -56,6 +58,7 @@ export default function Home() {
             >
               Read more
             </a>
+            
           </div>
         ))}
       </div>
